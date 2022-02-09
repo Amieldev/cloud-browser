@@ -5,17 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "Amieldev",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.2",
-    "prompt-sync": "^4.2.0",
     "puppeteer": "^13.1.3"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
   }
 }
