@@ -1,11 +1,15 @@
 const express=require('express');
 const app=express();
-const port=process.env.PORT||7000;
+const port=process.env.PORT||5000;
 const {Search}=require('./functions/search');
 const {SSR}=require('./functions/ssr');
 
 app.use(express.static('web'));
 app.use(express.json());
+
+app.get('/',(req,res)=>{
+
+});
 
 app.get('/ssr',(req,res)=>{
     (async ()=>{
