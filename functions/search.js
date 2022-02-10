@@ -4,9 +4,9 @@ async function Search(quest){
     const browser=await puppeteer.launch({headless:true});
     const page=await browser.newPage();
     await page.goto(`https://www.google.com/search?q=${quest}`);
-    // await page.screenshot({path:'pic.png'});
     const answer=await page.evaluate(() => {
-    return document.querySelector('.hgKElc').innerText||"couldn't find the answer";
+    const article=document.querySelector('.hgKElc');
+    return article?article.innerText:"Couldn't find the answer,try rephrasing the question."; 
 });
     await browser.close();
     return answer;
