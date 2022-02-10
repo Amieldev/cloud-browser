@@ -2,7 +2,7 @@ const express=require('express');
 const app=express();
 const port=process.env.PORT||5000;
 const {Search}=require('./functions/search');
-const {SSR}=require('./functions/ssr');
+const {Translate}=require('./functions/translate');
 
 app.use(express.static('web'));
 app.use(express.json());
@@ -11,19 +11,16 @@ app.get('/',(req,res)=>{
 
 });
 
-app.get('/ssr',(req,res)=>{
-    (async ()=>{
-        const html =await SSR('http://localhost:5000');
-        console.log(html);
-        res.send(html);
-    })();
+app.post('/search',async (req,res)=>{
+    const {text}=req.body;
+    const answer=await Search(text);
+    res.json({text:answer});
 });
 
-app.post('/ask',async (req,res)=>{
+app.post('/translate', async(req,res)=>{
+    const {lang}=req.body;
     const {text}=req.body;
-    console.log(`quest:${text}`);
-    const answer=await Search(text);
-    console.log(`answer:${answer}`);
+    const answer=await Translate(lang,text);
     res.json({text:answer});
 });
 
