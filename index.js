@@ -11,17 +11,17 @@ app.get('/',(req,res)=>{
 
 });
 
-app.post('/search',async (req,res)=>{
-    const {text}=req.body;
+app.get('/search',async (req,res)=>{
+    const {text}=req.query;
     const answer=await Search(text);
-    res.json({text:answer});
+    res.send(answer);
 });
 
-app.post('/translate', async(req,res)=>{
-    const {lang}=req.body;
-    const {text}=req.body;
+app.get('/translate', async(req,res)=>{
+    const {lang}=req.query;
+    const {text}=req.query;
     const answer=await Translate(lang,text);
-    res.json({text:answer});
+    res.send(answer);
 });
 
 app.listen(port, () => console.log(`Opened at port:${port}`));
