@@ -24,4 +24,4 @@ app.get('/translate', async(req,res)=>{
     res.send(answer);
 });
 
-app.listen(port, () => console.log(`Opened at port:${port}`));
+app.listen(port, () => console.log(`Server listening.`));

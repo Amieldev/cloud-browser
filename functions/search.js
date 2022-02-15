@@ -5,8 +5,16 @@ async function Search(quest){
     const page=await browser.newPage();
     await page.goto(`https://www.google.com/search?q=${quest}`);
     const answer=await page.evaluate(() => {
-    const article=document.querySelector('.hgKElc');
-    return article?article.innerText:"Couldn't find the answer,try rephrasing the question."; 
+    const mainArticle=document.querySelector('.hgKElc');
+        const miniArticle=document.querySelector('.kno-rdesc');
+        if(mainArticle){
+            return mainArticle.innerText;
+        }
+        else if(miniArticle){
+            return miniArticle.innerText
+        }else{
+            return "Couldn't find the result,try rephrasing the question";
+        }
 });
     await browser.close();
     return answer;
