@@ -6,7 +6,7 @@ async function Search(quest){
     await page.goto(`https://www.google.com/search?q=${quest}`);
     const answer=await page.evaluate(() => {
     const mainArticle=document.querySelector('.hgKElc');
-        const miniArticle=document.querySelector('.kno-rdesc');
+        const miniArticle=document.querySelector('.kno-rdesc').querySelector('span');
         if(mainArticle){
             return mainArticle.innerText;
         }
