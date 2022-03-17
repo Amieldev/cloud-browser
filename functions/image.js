@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 async function Img(quest,number) {
-    const browser = await puppeteer.launch({ headless:true});
+    const browser = await puppeteer.launch({ headless:false});
     const page = await browser.newPage();
     await page.goto(`https://search.brave.com/images?q=${quest}`, { waitUntil: 'load', timeout:0});
     await page.waitForSelector(".image.svelte-qd248k");
