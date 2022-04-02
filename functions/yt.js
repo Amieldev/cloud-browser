@@ -9,7 +9,7 @@ async function YT(title){
         return document.querySelector('.yt-simple-endpoint.style-scope.ytd-video-renderer').href;
     });
     await browser.close();
-    console.log(link);
+    return link;
 };
 
 module.exports={
