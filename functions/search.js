@@ -7,10 +7,10 @@ async function Search(quest){
     const answer=await page.evaluate(() => {
     const mainArticle=document.querySelector('.hgKElc');
         const miniArticle=document.querySelector('.kno-rdesc').querySelector('span');
-        if(mainArticle){
+        if(mainArticle!==null){
             return mainArticle.innerText;
         }
-        else if(miniArticle){
+        else if(miniArticle!==null){
             return miniArticle.innerText
         }else{
             return "Couldn't find the result,try rephrasing the question";
